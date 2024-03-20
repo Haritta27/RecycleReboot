@@ -90,5 +90,39 @@ var imagesData = {
 
     document.getElementById("totalQuantity").innerHTML = "Total amount: " + amount;
 }
+function validateUPI() {
+    var upiIdInput = document.getElementById("upiIdInput");
+    var upiIdErrorMessage = document.getElementById("upiIdErrorMessage");
+    var upiIdPattern = /(^.*@oksbi.*$)|(^.*@okhdfc.*$)|(^.*@okicici.*$)/;
+
+    if (upiIdPattern.test(upiIdInput.value)) {
+      upiIdErrorMessage.textContent = ""; // Clear error message if UPI ID is valid
+    } else {
+      upiIdErrorMessage.textContent = "Invalid UPI ID format. UPI ID must contain '@ok--bankName--";
+    }
+  }
+
+  function submitForm() {
+    // Code to submit the form data to the server goes here
+  
+    // Display the modal
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  
+    // Close the modal when the user clicks the close button
+    var closeBtn = document.getElementsByClassName("close")[0];
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    // Close the modal when the user clicks anywhere outside of it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
+  
+
 
   
