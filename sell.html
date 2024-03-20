@@ -6,27 +6,29 @@
   <title>Sell Your Refurbished Product</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
       margin: 0;
       padding: 0;
+      background-color: #ffffe0; /* Whitish-yellow background */
     }
-
     .header {
-      background-color: #4caf50;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
+        background-color: #45a049;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Adding shadow effect */
     }
 
     h1 {
       margin-top: 0;
-    }
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 
+    }
     .form-container {
-      background-color: #f2f2f2;
+      background-color: #e2e7bb;
       padding: 20px;
       margin: 20px auto;
-      max-width: 400px;
+      max-width: 500px;
       border-radius: 10px;
       position: relative;
     }
@@ -39,11 +41,20 @@
     input[type="text"],
     input[type="number"],
     input[type="file"] {
-      width: calc(100% - 30px); /* Adjusting width to accommodate the rupee symbol */
-      padding: 5px;
-      margin-top: 5px;
-      padding-left: 30px; /* Add padding for rupee symbol */
+     width: calc(100% - 30px); /* Adjusting width to accommodate the rupee symbol */
+     padding: 5px;
+     margin-top: 5px;
+     padding-left: 30px; /* Add padding for rupee symbol */
+     border: 1.5px solid #006400; /* Dark green border */
     }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="file"]:focus {
+     outline: none;
+     border-color: #004d00; /* Darker green border on focus */
+    }
+
 
     .rupee-symbol {
       position: relative;
@@ -56,7 +67,7 @@
       display: block;
       margin: 20px auto 0;
       padding: 10px 20px;
-      background-color: #4caf50;
+      background-color: #45a049;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -95,7 +106,7 @@
 
     .back-button button {
       padding: 10px 20px;
-      background-color: #4caf50;
+      background-color: #45a049;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -114,6 +125,7 @@
 
   <div class="form-container">
     <form id="sell-form" action="/sell" method="POST" enctype="multipart/form-data">
+      <!-- Your form fields -->
       <label for="product-name">Product Name:</label>
       <input type="text" id="product-name" name="product-name" required>
 
@@ -131,6 +143,8 @@
       <input type="file" id="product-photos" name="product-photos" multiple required>
       <p id="photo-note">Note: Please upload a clear photo of your product.</p>
 
+      <div id="image-preview"></div> <!-- Container for image preview -->
+
       <button type="submit">Finish</button>
     </form>
   </div>
@@ -146,6 +160,33 @@
   </div>
 
   <script>
+    document.getElementById('product-photos').addEventListener('change', function(event) {
+      var files = event.target.files; // Get the selected files
+      var imagePreviewContainer = document.getElementById('image-preview'); // Get the image preview container
+
+      // Clear previous image previews
+      imagePreviewContainer.innerHTML = '';
+
+      // Iterate through selected files
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+
+        // Check if the selected file is an image
+        if (file.type.match('image.*')) {
+          var reader = new FileReader(); // Create a new FileReader object
+
+          // Function to handle FileReader onload event
+          reader.onload = function(event) {
+            var img = document.createElement('img'); // Create an img element
+            img.src = event.target.result; // Set the src attribute of the img element to the data URL
+            img.style.maxWidth = '100%'; // Set max-width to ensure the image fits within the container
+            imagePreviewContainer.appendChild(img); // Append the img element to the image preview container
+          };
+
+          reader.readAsDataURL(file); // Read the selected file as a data URL
+        }
+      }
+    });
     document.getElementById('sell-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent form submission
       document.getElementById('popup').style.display = 'block'; // Show popup
