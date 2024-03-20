@@ -132,7 +132,7 @@ main {
     text-align: center;
     height: 100vh; /* Set hero section height to viewport height */
     overflow: hidden; /* Hide overflow to prevent scrolling */
-    background-image: url('images/main_page.jpg');
+    background-image: url('main_page.jpg');
     background-size: cover; /* Ensure the background image covers the entire hero section */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -160,7 +160,7 @@ main {
     text-align: center;
     height: 100vh; /* Set hero section height to viewport height */
     overflow: hidden; /* Hide overflow to prevent scrolling */
-    background-image: url("images/Screenshot 2024-03-20 141716.png");
+    background-image: url("Screenshot 2024-03-20 141716.png");
     background-size: cover; /* Ensure the background image covers the entire hero section */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
