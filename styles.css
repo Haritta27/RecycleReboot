@@ -94,5 +94,5 @@ body {
   }
   #reuse,
 #recycle {
-    width: auto; /* Or set a specific width */
+    width: 200px; /* Or set a specific width */
 }
