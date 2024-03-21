@@ -10,25 +10,35 @@
       margin: 0;
       padding: 0;
       background-color: #ffffe0;
+      
     }
     
     header {
       background-color: #4caf50;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
-      color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: #f9f3e4; /* Adjusts color as needed */
 
     }
     h1 {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 36px;
-      font-weight: bold;
+      font-family: 'Pacifico', cursive;
+      font-weight: bold; /* Adjust weight if needed */
+      font-size: 3em; /* Adjusts size as needed */
       text-align: center;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
     }
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-weight: bold; /* Adjust weight if needed */
+      font-size: 1.5em; /* Adjusts size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    }
+
     .section-button {
       background-color: #4caf50;
       color: #fff;
@@ -125,15 +135,17 @@
       position: relative;
       margin: auto;
 }
-
 .slide {
-      display: none;
+  display: none;
+  height: 300px; /* Set a fixed height for the slides */
 }
 
 .slide img {
-      width: 100%;
-      height: auto;
+  width: 100%; /* Make sure the image fills the width of its container */
+  height: 120%; /* Ensure the image fills the height of its container */
+  object-fit: cover; /* Prevent distortion by covering the entire space */
 }
+
 .sell-btn {
   position: absolute;
   top: 20px;
@@ -166,11 +178,11 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="mainrecycle.html">Recycle</a></li>
       <li><a href="reuse.html">Reuse</a></li>
-      <li><a href="donate.html">Donate Hub</a></li>
+      <li><a href="#">Donate Hub</a></li>
       <li><a href="index.html#ABOUT">About</a></li>
     </ul>
   </nav>
-  <h1>Give your waste belongings a 2nd life</h1><br>
+  <h2>Give your waste belongings a 2nd life</h2><br>
   <div class="slideshow-container">
     <div class="slide">
       <img src="image1.jpg" alt="Image 1">
@@ -191,7 +203,7 @@
         <img src="image6.jpg" alt="Image 3">
     </div>
   <div class="container">
-    <br><br><button class="section-button" onclick="showSection('plastic')">Plastic Reuse Ideas</button>
+    <br><br><br><br><button class="section-button" onclick="showSection('plastic')">Plastic Reuse Ideas</button>
     <button class="section-button" onclick="showSection('paper')">Paper Reuse Ideas</button>
     <button class="section-button" onclick="showSection('fabric')">Fabric Reuse Ideas</button>
     <div id="plastic-ideas" class="ideas-container">
