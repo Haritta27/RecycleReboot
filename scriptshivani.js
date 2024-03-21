@@ -101,7 +101,19 @@ function validateUPI() {
       upiIdErrorMessage.textContent = "Invalid UPI ID format. UPI ID must contain '@ok--bankName--";
     }
   }
-
+  function toggleMenu() {
+    var menu = document.querySelector('.menu');
+    menu.classList.toggle('show');
+  }
+  document.addEventListener('click', function(event) {
+    var menu = document.querySelector('.menu');
+    var menuIcon = document.querySelector('.menu-icon');
+    var isClickInsideMenu = menu.contains(event.target) || menuIcon.contains(event.target);
+  
+    if (menu.classList.contains('show') && !isClickInsideMenu) {
+      menu.classList.remove('show');
+    }
+  });
   function submitForm() {
     // Code to submit the form data to the server goes here
   
