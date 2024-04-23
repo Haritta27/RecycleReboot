@@ -45,7 +45,10 @@
         const sortOrder = 'DESC'; // Use 'DESC' for descending order
         const sortQuery = Query.order(sortField, sortOrder);
 
-        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78', [sortQuery]);
+        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78',
+            [
+                Query.orderDesc('CreatedDateTime'),
+            ]);
 
         promise.then(function (response) {
             // Success
