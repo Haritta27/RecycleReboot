@@ -41,22 +41,11 @@
             // Success
             documentList.innerHTML = ''; // Clear previous content
 
-            /*
-            response.documents.forEach(function(document) {
+            response.documents.forEach(function(doct) {
                 const docDiv = document.createElement('div');
-                docDiv.textContent = JSON.stringify(document);
+                docDiv.textContent = JSON.stringify(doct);
                 documentList.appendChild(docDiv);
             });
-            */
-            
-            const documents = response.documents; // Assuming response.documents is an array
-
-            for (let i = 0; i < documents.length; i++) {
-              const document = documents[i];
-              const docDiv = document.createElement('div');
-              docDiv.textContent = JSON.stringify(document);
-              documentList.appendChild(docDiv);
-            }
             
         }, function (error) {
             // Failure
