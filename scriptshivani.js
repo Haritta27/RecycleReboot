@@ -116,6 +116,24 @@ function validateUPI() {
   });
   function submitForm() {
     // Code to submit the form data to the server goes here
+
+  // Get the values from the input fields
+  var plasticQuantity = document.getElementById("plasticQuantity").value;
+  var paperQuantity = document.getElementById("paperQuantity").value;
+  var fabricQuantity = document.getElementById("fabricQuantity").value;
+  var upiId = document.getElementById("upiIdInput").value;
+
+  // Create a formatted message with the input values
+  var submittedContent = `
+    <h2>Your Recycling Details</h2>
+    <p><strong>Plastic Quantity:</strong> ${plasticQuantity} grams</p>
+    <p><strong>Paper Quantity:</strong> ${paperQuantity} kilograms</p>
+    <p><strong>Fabric Quantity:</strong> ${fabricQuantity} grams</p>
+    <p><strong>UPI ID:</strong> ${upiId}</p>
+  `;
+
+  // Set the modal content
+  document.querySelector(".submitted-data").innerHTML = submittedContent;      
   
     // Display the modal
     var modal = document.getElementById("myModal");
