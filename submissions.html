@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Submissions</title>
+      <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+    <h1>Recycling Form</h1>
+  </header> 
+  <br><br>
+    
     <div id="documentList"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/appwrite@13"></script>
     <script>
-        const client = new Appwrite.Client();
-        const databases = new Appwrite.Databases(client);
-        
+
+    	const { Client, Databases } = Appwrite;
+        const client = new Client();
+    
         client
-            .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-            .setProject('5df5acd0d48c2') // Your project ID
-        ;
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('6627d17a708b0b4549c9');
+
+        const databases = new Databases(client);
         
-        const promise = databases.listDocuments('[DATABASE_ID]', '[COLLECTION_ID]');
+        //const promise = databases.listDocuments('[DATABASE_ID]', '[COLLECTION_ID]');
+        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78');
         
         promise.then(function (response) {
             // Success
