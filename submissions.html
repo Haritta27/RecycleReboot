@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Submissions</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         table {
             width: 100%;
@@ -40,7 +41,11 @@
         const databases = new Databases(client);
         const documentList = document.getElementById('documentList');
 
-        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78');
+        const sortField = 'CreatedDateTime'; // Replace with the field name you want to sort on
+        const sortOrder = 'DESC'; // Use 'DESC' for descending order
+        const sortQuery = Query.order(sortField, sortOrder);
+
+        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78', [sortQuery]);
 
         promise.then(function (response) {
             // Success
@@ -52,9 +57,11 @@
             
             // Create table headers
             headers.forEach(function(header) {
-                const th = document.createElement('th');
-                th.textContent = header;
-                headerRow.appendChild(th);
+                if (!header.startsWith('$')) { // Check if header doesn't start with "$"
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                }
             });
             table.appendChild(headerRow);
 
@@ -62,9 +69,11 @@
             response.documents.forEach(function(doc) {
                 const row = document.createElement('tr');
                 headers.forEach(function(header) {
-                    const cell = document.createElement('td');
-                    cell.textContent = doc[header];
-                    row.appendChild(cell);
+                    if (!header.startsWith('$')) { // Check if header doesn't start with "$"
+                        const cell = document.createElement('td');
+                        cell.textContent = doc[header];
+                        row.appendChild(cell);
+                    }
                 });
                 table.appendChild(row);
             });
