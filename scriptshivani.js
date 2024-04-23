@@ -157,12 +157,19 @@ function validateUPI() {
     const databases = new Databases(client);
     const uuid = generateUUID();
     console.log(uuid); //
-      
+
+     // Create a new Date object to get the current date and time
+    const currentDate = new Date();
+    
+    // Format the date and time as a string
+    const formattedDate = currentDate.toISOString();
+    
     var docJson = {
         plasticQuantity: plasticQuantity,
         paperQuantity: paperQuantity,
         fabricQuantity: fabricQuantity,
-        upiId: upiId
+        upiId: upiId,
+        CreateDateTime: formattedDate
     };
 
     console.log(docJson); //
