@@ -35,13 +35,12 @@
             mode: 'no-cors' // Set the mode to 'no-cors'
         });        
         */
+        const documentList = document.getElementById('documentList');
         
         promise.then(function (response) {
             // Success
-            const documentList = document.getElementById('documentList');
             documentList.innerHTML = ''; // Clear previous content
-                            
-            
+           
             response.documents.forEach(function(document) {
                 const docDiv = document.createElement('div');
                 docDiv.textContent = JSON.stringify(document);
