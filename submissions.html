@@ -40,9 +40,10 @@
             // Success
             const documentList = document.getElementById('documentList');
             documentList.innerHTML = ''; // Clear previous content
+                            const docDiv = document.createElement('div');
             
             response.documents.forEach(function(document) {
-                const docDiv = document.createElement('div');
+
                 docDiv.textContent = JSON.stringify(document);
                 documentList.appendChild(docDiv);
             });
