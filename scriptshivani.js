@@ -1,3 +1,9 @@
+const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('6627d17a708b0b4549c9');
+
 // Define an object to map each selected item to its corresponding image URL and dimensions
 var imagesData = {
     "Plastics": {url: "plastic_img.jpeg", width: "200", height: "200"},
@@ -70,6 +76,18 @@ var imagesData = {
     // Add your logic here for skipping
     window.location.href = "recycle.html";
   }
+
+    function generateUUID() {
+      let uuid = '';
+      for (let i = 0; i < 32; i++) {
+        let random = (Math.random() * 16) | 0;
+        if (i === 8 || i === 12 || i === 16 || i === 20) {
+          uuid += '-';
+        }
+        uuid += (i === 12 ? 4 : i === 16 ? (random & 3) | 8 : random).toString(16);
+      }
+      return uuid;
+    }
   
   // Function to display image for the selected item
   function displayImage(item) {
@@ -131,6 +149,23 @@ function validateUPI() {
     <p><strong>Fabric Quantity:</strong> ${fabricQuantity} grams</p>
     <p><strong>UPI ID:</strong> ${upiId}</p>
   `;
+
+    const databases = new Databases(client);
+    const uuid = generateUUID();
+    console.log(uuid); //
+    docJson = {
+        plasticQuantity: plasticQuantity,
+        paperQuantity: paperQuantity,
+        fabricQuantity: fabricQuantity
+        upiId: upiId
+    };
+    const promise = databases.createDocument('6627d48b11903bca0210', '6627d4a497ca264a5c78', uuid, docJson);
+    
+    promise.then(function (response) {
+        console.log(response); // Success
+    }, function (error) {
+        console.log(error); // Failure
+    });      
 
   // Set the modal content
   document.querySelector(".submitted-data").innerHTML = submittedContent;      
