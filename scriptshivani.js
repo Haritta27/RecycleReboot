@@ -157,8 +157,15 @@ function validateUPI() {
     const databases = new Databases(client);
     const uuid = generateUUID();
     console.log(uuid); //
+      
+    var docJson = {
+        plasticQuantity: plasticQuantity,
+        paperQuantity: paperQuantity,
+        fabricQuantity: fabricQuantity,
+        upiId: upiId,
+    };
 
-    const promise = databases.createDocument('6627d48b11903bca0210', '6627d4a497ca264a5c78', uuid, {});
+    const promise = databases.createDocument('6627d48b11903bca0210', '6627d4a497ca264a5c78', uuid, docJson);
     
     promise.then(function (response) {
         console.log(response); // Success
