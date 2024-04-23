@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Submissions</title>
+</head>
+<body>
+    <div id="documentList"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13"></script>
+    <script>
+        const client = new Appwrite.Client();
+        const databases = new Appwrite.Databases(client);
+        
+        client
+            .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+            .setProject('5df5acd0d48c2') // Your project ID
+        ;
+        
+        const promise = databases.listDocuments('[DATABASE_ID]', '[COLLECTION_ID]');
+        
+        promise.then(function (response) {
+            // Success
+            const documentList = document.getElementById('documentList');
+            documentList.innerHTML = ''; // Clear previous content
+            
+            response.documents.forEach(function(document) {
+                const docDiv = document.createElement('div');
+                docDiv.textContent = JSON.stringify(document);
+                documentList.appendChild(docDiv);
+            });
+        }, function (error) {
+            // Failure
+            console.log(error);
+        });
+    </script>
+</body>
+</html>
