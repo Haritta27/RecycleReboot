@@ -158,7 +158,7 @@ function validateUPI() {
     var docJson = {
         plasticQuantity: plasticQuantity,
         paperQuantity: paperQuantity,
-        fabricQuantity: fabricQuantity
+        fabricQuantity: fabricQuantity,
         upiId: upiId
     };
     console.log(docJson); //
