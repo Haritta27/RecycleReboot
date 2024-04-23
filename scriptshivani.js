@@ -4,6 +4,8 @@ client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('6627d17a708b0b4549c9');
 
+const databases = new Databases(client);
+
 // Define an object to map each selected item to its corresponding image URL and dimensions
 var imagesData = {
     "Plastics": {url: "plastic_img.jpeg", width: "200", height: "200"},
