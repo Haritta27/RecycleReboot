@@ -27,12 +27,14 @@
         const databases = new Databases(client);
         
         //const promise = databases.listDocuments('[DATABASE_ID]', '[COLLECTION_ID]');
-        //const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78');
+        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78');
 
+        /*
         const promise = fetch('https://cloud.appwrite.io/v1/databases/6627d48b11903bca0210/collections/6627d4a497ca264a5c78/documents', {
             method: 'GET',
             mode: 'no-cors' // Set the mode to 'no-cors'
         });        
+        */
         
         promise.then(function (response) {
             // Success
